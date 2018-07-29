@@ -1,0 +1,12 @@
+470e575304242a4b84d327c05b9d4ac2 *DESCRIPTION
+a8e7bb178ab9e3698d68e9f41599a892 *NAMESPACE
+c45357061dc6dea810a6dfb23cdfe7fb *NEWS
+4e0bf944f5458df676fd43da433b7c51 *R/pssmooth.R
+400c6e78419341499cf6e44948731684 *README.md
+e74e7b87706e3f6757ab9e348c38eb19 *inst/CITATION
+fd4218d6edb3f9906fb226deb0c447b6 *man/bootRiskCurve.Rd
+d4a5e254556cd8c6253a4aafe08ba9c7 *man/plotMCEPcurve.Rd
+d0533edc8b7567cca1452c24c511673c *man/riskCurve.Rd
+52dcce8dcc5eff3d5da65c83dca4b095 *man/summary.riskCurve.Rd
+afe5ad44bac3a6260da7f87b80324c1d *man/testConstancy.Rd
+7ee6ff91eacae3d8979daca41b464a2f *man/testEquality.Rd
