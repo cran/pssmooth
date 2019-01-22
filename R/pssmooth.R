@@ -388,8 +388,8 @@ bootRiskCurve <- function(formula, bsm, tx, data, pstype=c("continuous", "ordere
       } else {
         fm <- Y ~ 1
       }
-      cpointP <- chngptm(formula.1=fm, formula.2=~S, data=subset(bdata2, Z==0 & !is.na(Y)), family="binomial", type="hinge", prob.weights=weights)$coefficients["chngpt"]
-      cpointT <- chngptm(formula.1=Y ~ 1, formula.2=~S, data=subset(bdata2, Z==1 & !is.na(Y)), family="binomial", type="hinge", prob.weights=weights)$coefficients["chngpt"]
+      cpointP <- chngptm(formula.1=fm, formula.2=~S, data=subset(bdata2, Z==0 & !is.na(Y)), family="binomial", type="hinge", weights=subset(bdata2, Z==0 & !is.na(Y))$weights)$coefficients["chngpt"]
+      cpointT <- chngptm(formula.1=Y ~ 1, formula.2=~S, data=subset(bdata2, Z==1 & !is.na(Y)), family="binomial", type="hinge", weights=subset(bdata2, Z==1 & !is.na(Y))$weights)$coefficients["chngpt"]
       # use their minimum as the hinge point in the below specified GLMs
       cpoint <- min(cpointP, cpointT)
 
@@ -565,7 +565,7 @@ bootRiskCurve <- function(formula, bsm, tx, data, pstype=c("continuous", "ordere
 #'
 #' Hall, P., Racine, J., and Li, Q. (2004), Cross-validation and the estimation of conditional probability densities, \emph{JASA} 99(468), 1015-1026.
 #'
-#' Juraska, M., Huang, Y., and Gilbert, P. B., Inference on treatment effect modification by biomarker response in a three-phase sampling design. Under review.
+#' Juraska, M., Huang, Y., and Gilbert, P. B. (2018), Inference on treatment effect modification by biomarker response in a three-phase sampling design, Biostatistics, kxy074, \url{https://doi.org/10.1093/biostatistics/kxy074}.
 #'
 #' @examples
 #' n <- 500
@@ -704,8 +704,8 @@ riskCurve <- function(formula, bsm, tx, data, pstype=c("continuous", "ordered"),
     } else {
       fm <- Y ~ 1
     }
-    cpointP <- chngptm(formula.1=fm, formula.2=~S, data=subset(data2, Z==0 & !is.na(Y)), family="binomial", type="hinge", prob.weights=weights)$coefficients["chngpt"]
-    cpointT <- chngptm(formula.1=Y ~ 1, formula.2=~S, data=subset(data2, Z==1 & !is.na(Y)), family="binomial", type="hinge", prob.weights=weights)$coefficients["chngpt"]
+    cpointP <- chngptm(formula.1=fm, formula.2=~S, data=subset(data2, Z==0 & !is.na(Y)), family="binomial", type="hinge", weights=subset(data2, Z==0 & !is.na(Y))$weights)$coefficients["chngpt"]
+    cpointT <- chngptm(formula.1=Y ~ 1, formula.2=~S, data=subset(data2, Z==1 & !is.na(Y)), family="binomial", type="hinge", weights=subset(data2, Z==1 & !is.na(Y))$weights)$coefficients["chngpt"]
     # use their minimum as the hinge point in the below specified GLMs
     cpoint <- min(cpointP, cpointT)
 
@@ -812,7 +812,7 @@ invtContrastRiskCurve <- function(x, contrast){
 #'
 #' @return A data frame containing point and possibly interval estimates of the specified mCEP curve.
 #'
-#' @references Juraska, M., Huang, Y., and Gilbert, P. B., Inference on treatment effect modification by biomarker response in a three-phase sampling design. Under review.
+#' @references Juraska, M., Huang, Y., and Gilbert, P. B. (2018), Inference on treatment effect modification by biomarker response in a three-phase sampling design, Biostatistics, kxy074, \url{https://doi.org/10.1093/biostatistics/kxy074}.
 #'
 #' @examples
 #' n <- 500
@@ -913,7 +913,7 @@ summary.riskCurve <- function(object, boot=NULL, contrast=c("te", "rr", "logrr",
 #'
 #' @return A numeric value representing the two-sided p-value from the test of either \eqn{H_0^1} or \eqn{H_0^2}.
 #'
-#' @references Juraska, M., Huang, Y., and Gilbert, P. B., Inference on treatment effect modification by biomarker response in a three-phase sampling design. Under review.
+#' @references Juraska, M., Huang, Y., and Gilbert, P. B. (2018), Inference on treatment effect modification by biomarker response in a three-phase sampling design, Biostatistics, kxy074, \url{https://doi.org/10.1093/biostatistics/kxy074}.
 #'
 #' Roy, S. N. and Bose, R. C. (1953), Simultaneous condence interval estimation, \emph{The Annals of Mathematical Statistics}, 24, 513-536.
 #'
@@ -1019,7 +1019,7 @@ testConstancy <- function(object, boot, contrast=c("te", "rr", "logrr", "rd"), n
 #'
 #' @return A numeric value representing the two-sided p-value from the test of either \eqn{H_0^3} or \eqn{H_0^4}.
 #'
-#' @references Juraska, M., Huang, Y., and Gilbert, P. B., Inference on treatment effect modification by biomarker response in a three-phase sampling design. Under review.
+#' @references Juraska, M., Huang, Y., and Gilbert, P. B. (2018), Inference on treatment effect modification by biomarker response in a three-phase sampling design, Biostatistics, kxy074, \url{https://doi.org/10.1093/biostatistics/kxy074}.
 #'
 #' Roy, S. N. and Bose, R. C. (1953), Simultaneous condence interval estimation, \emph{The Annals of Mathematical Statistics}, 24, 513-536.
 #'
